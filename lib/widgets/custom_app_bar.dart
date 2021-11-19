@@ -22,53 +22,62 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SafeArea(
         child: Column(
           children: [
-            AppBar(
-              title: Text(
-                'Garbage Bin',
-                style: Theme.of(context).textTheme.headline6?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-              ),
-              backgroundColor: kPrimary,
-              elevation: 0,
-              actions: const [
-                Icon(
-                  Icons.settings,
-                  color: Colors.white,
-                ),
-              ],
-            ),
-            Container(
-              padding: const EdgeInsets.all(kPadding),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(kRadius),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Expanded(
-                    flex: 11,
-                    child: Text(
-                      'Don\'t forget to pay the garbage collector on July 10thaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  Spacer(),
-                  Expanded(
-                    flex: 1,
-                    child: Icon(
-                      Icons.notifications_none_outlined,
-                      color: kPrimary,
-                    ),
-                  )
-                ],
-              ),
-            ),
+            appBar(context),
+            const SizedBox(height: kPadding),
+            notificationContainer(),
           ],
         ),
+      ),
+    );
+  }
+
+  AppBar appBar(BuildContext context) {
+    return AppBar(
+      title: Text(
+        'Garbage Bin',
+        style: Theme.of(context).textTheme.headline6?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+      ),
+      backgroundColor: kPrimary,
+      elevation: 0,
+      actions: const [
+        Icon(
+          Icons.settings,
+          color: Colors.white,
+        ),
+      ],
+    );
+  }
+
+  Container notificationContainer() {
+    return Container(
+      padding: const EdgeInsets.all(kPadding),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(kRadius),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          Expanded(
+            flex: 11,
+            child: Text(
+              'Don\'t forget to pay the garbage collector on July 10th',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Spacer(),
+          Expanded(
+            flex: 1,
+            child: Icon(
+              Icons.notifications_none_outlined,
+              color: kPrimary,
+            ),
+          )
+        ],
       ),
     );
   }
